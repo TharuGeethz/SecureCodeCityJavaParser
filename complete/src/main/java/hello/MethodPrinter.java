@@ -22,7 +22,7 @@ import com.github.javaparser.ast.visitor.*;
     public class MethodPrinter {
 
     public static void main(String[] args) throws Exception {
-        File file = new File("/home/tharu/gs-messaging-jms/complete/src/main/java/hello/Application.java");
+        File file = new File("/home/tharu/gs-messaging-jms/complete/src/main/java/hello/Tharu.java");
         // creates an input stream for the file to be parsed
         FileInputStream in = new FileInputStream(file);
 
@@ -43,7 +43,17 @@ import com.github.javaparser.ast.visitor.*;
              this method will be called for all methods in this 
              CompilationUnit, including inner class methods */
             System.out.println(n.getName());
-            System.out.println("The beginning is: "+ n.getBegin().toString().replace("Optional[(", "").replace(")]", ""));
+            System.out.println("The begining : ");
+            String[] BeginningLine =n.getBegin().toString().replace("Optional[(", "").replace(")]", "").split(",");
+            System.out.println(BeginningLine[0]);
+            
+            //System.out.println(n.getBegin().toString().replace("Optional[(", "").replace(")]", "").split(","));
+            
+            System.out.println("The end : ");
+            String[] EndLine =n.getEnd().toString().replace("Optional[(", "").replace(")]", "").split(",");
+            System.out.println(EndLine[0]);
+            //System.out.println(n.getEnd().toString().replace("Optional[(", "").replace(")]", ""));
+            System.out.println("\n");
             super.visit(n, arg);
         }
     }

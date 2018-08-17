@@ -19,7 +19,7 @@ import java.io.File;
     
  public class CuPrinter {
 
-    public static void main(String[] args) throws Exception {
+   /** public static void main(String[] args) throws Exception {
         File file = new File("/home/tharu/gs-messaging-jms/complete/src/main/java/hello/Email.java");
         
         System.out.println("BBBBBBBBBBBBBBBBBBBBBBEFOREEEEEEEEEEE");
@@ -31,7 +31,7 @@ System.out.println("First jumpppppppppp");
 
         // prints the resulting compilation unit to default system output
         System.out.println(cu.toString());
-    }
+    } */
 }
     
     
