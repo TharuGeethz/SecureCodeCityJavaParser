@@ -1,10 +1,15 @@
 package com.scc.models;
 
-public class ClassPath {
-
+public class ClassError {
+    int lineNum;
     private String path;
 
-    public ClassPath() {
+    public int getLineNum() {
+        return lineNum;
+    }
+
+    public void setLineNum(int lineNum) {
+        this.lineNum = lineNum;
     }
 
     public String getPath() {
@@ -14,5 +19,4 @@ public class ClassPath {
     public void setPath(String path) {
         this.path = path;
     }
-
 }

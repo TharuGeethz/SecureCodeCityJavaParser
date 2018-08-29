@@ -1,15 +1,15 @@
 package com.scc.models;
 
-public class MethodParameter {
+public class MethodParams {
 
     private String methodName;
     private String startingLine;
     private String endingLine;
 
-    public MethodParameter() {
+    public MethodParams() {
     }
 
-    public MethodParameter(String methodName, String startingLine, String endingLine) {
+    public MethodParams(String methodName, String startingLine, String endingLine) {
         this.methodName = methodName;
         this.startingLine = startingLine;
         this.endingLine = endingLine;
