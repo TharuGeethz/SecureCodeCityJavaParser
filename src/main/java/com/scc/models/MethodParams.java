@@ -1,5 +1,8 @@
 package com.scc.models;
 
+/**
+ * @author Tharushi Geethma Abeysinghe
+ */
 public class MethodParams {
 
     private String methodName;

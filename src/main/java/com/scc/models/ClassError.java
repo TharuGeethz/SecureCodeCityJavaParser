@@ -1,5 +1,8 @@
 package com.scc.models;
 
+/**
+ * @author Tharushi Geethma Abeysinghe
+ */
 public class ClassError {
     int lineNum;
     private String path;

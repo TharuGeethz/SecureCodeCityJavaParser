@@ -5,6 +5,9 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.scc.models.MethodBody;
 
+/**
+ * @author Tharushi Geethma Abeysinghe
+ */
 public class MethodErrorVisitor extends VoidVisitorAdapter<Void> {
 
     //new constructor  of  MethodErrorVisitor

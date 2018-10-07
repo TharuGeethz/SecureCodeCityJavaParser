@@ -1,6 +1,8 @@
 package com.scc.models;
 
-
+/**
+ * @author Tharushi Geethma Abeysinghe
+ */
 public class MethodBody {
     int start;
     int end;

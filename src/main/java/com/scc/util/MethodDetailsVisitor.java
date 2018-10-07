@@ -6,6 +6,9 @@ import com.scc.models.MethodParams;
 
 import java.util.ArrayList;
 
+/**
+ * @author Tharushi Geethma Abeysinghe
+ */
 public class MethodDetailsVisitor extends VoidVisitorAdapter<Void> {
 
     ArrayList<MethodParams> lst;
