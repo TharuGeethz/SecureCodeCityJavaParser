@@ -1,0 +1,164 @@
+openapi: 3.0.0
+info:
+  title: Secure Code City Java Parser
+  version: 1.0.0
+    
+paths:
+  /method/details:
+    post:
+      description: Get methods details from a given class
+      parameters:
+        - name: path
+          in: header
+          required: true
+          description: |
+            This should be the absolute path to given Java class file as in linux enviroment
+          schema:
+            type: string
+            format: uri
+      responses:
+        '200':
+          description: Method details successfully retrieved.
+          content:
+            application/json:
+              schema:
+                description: Array of Json objects each contains details of a method
+                properties:
+                  methodName:
+                    description: The name of the method in given class
+                    type: string
+                    example: getAllusers
+                  startingLine:
+                    description : The starting line number of the method
+                    type: string
+                    example: 9
+                  endingLine:
+                    description : The end line number of the method
+                    type: string
+                    example: 39
+        '404':
+          description: Method details retrieval failed.
+          content:
+            application/json:
+              schema:
+                description: When methods not found
+                properties:
+                  httpStatusCode:
+                    description: The code relavent to error
+                    type: integer
+                    example: 404
+                  httpStatus:
+                    description : The Http Status of the error
+                    type: string
+                    example: Not Found
+                  errorDescription:
+                    description : The description of the error
+                    type: string
+                    example: File Not Found
+                  
+  /method/errodetails:
+    post:
+      description: Get methods details from a given class
+      parameters:
+        - name: path
+          in: header
+          required: true
+          description: |
+            This should be the absolute path to given Java class file as in linux enviroment
+          schema:
+            type: string
+            format: uri
+      responses:
+        '200':
+          description: Method details successfully retrieved.
+          content:
+            application/json:
+              schema:
+                description: Array of Json objects each contains details of a method
+                properties:
+                  start:
+                    description: The starting line number of a given method
+                    type: integer
+                    example: 2
+                  end:
+                    description : The end line number of a given method
+                    type: integer
+                    example: 9
+                  errorLine:
+                    description : The line number which have the error
+                    type: integer
+                    example: 7    
+                  body:
+                    description : The method body as String
+                    type: string
+                    example: "public void getErrorLine() {...}"
+        '404':
+          description: Method error details retrieval failed.
+          content:
+            application/json:
+              schema:
+                description: When error methods not found
+                properties:
+                  httpStatusCode:
+                    description: The code relavent to error
+                    type: integer
+                    example: 404
+                  httpStatus:
+                    description : The Http Status of the error
+                    type: string
+                    example: Not Found
+                  errorDescription:
+                    description : The description of the error
+                    type: string
+                    example: File Not Found
+                    
+  /startIntellij:
+    post:
+      description: Start Intellij with given error contained file and line
+      parameters:
+        - name: lineNumber
+          in: header
+          required: true
+          description: |
+            Line number where error contains in given file
+          schema:
+            type: string
+        - name: filePathToOpen
+          in: header
+          required: true
+          description: |
+            This should be the absolute path to given Java class file as in linux enviroment
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Method details successfully retrieved.
+          content:
+            application/json:
+              schema:
+                description: Array of Json objects each contains details of a method
+                properties:
+                  status:
+                    description: The status of the Intellij Start
+                    type: string
+                    example: success
+                  message:
+                    description : The response massege for success status
+                    type: string
+                    example: Intellij IDEA started
+        '417':
+          description: Intellij start process failed response.
+          content:
+            application/json:
+              schema:
+                description: When Intellij failed to start.
+                properties:
+                  status:
+                    description: The status of the Intellij Start
+                    type: string
+                    example: failed
+                  message:
+                    description : The Http Status of the error
+                    type: string
+                    example: Intellij IDEA starting failed
+                  
