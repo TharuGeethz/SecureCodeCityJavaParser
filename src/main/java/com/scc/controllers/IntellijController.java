@@ -42,7 +42,7 @@ public class IntellijController {
                 startStatus.setStatus("failed");
                 startStatus.setMessage("Intellij IDEA starting failed");
                 return new ResponseEntity<>(
-                        startStatus, HttpStatus.NOT_FOUND
+                        startStatus, HttpStatus.EXPECTATION_FAILED
                 );
             }
 
@@ -55,7 +55,7 @@ public class IntellijController {
             startStatus.setMessage("Intellij IDEA starting failed");
 
             return new ResponseEntity<>(
-                    startStatus, HttpStatus.NOT_FOUND
+                    startStatus, HttpStatus.EXPECTATION_FAILED
             );
         }
     }
