@@ -21,14 +21,14 @@ import java.util.ArrayList;
 @RestController
 public class MethodController {
 
-    @PostMapping("/method/details")
-    public ResponseEntity<?> sendMethodParas(@RequestBody ClassPath currentClassPath) {
+    @GetMapping("/method/details")
+    public ResponseEntity<?> sendMethodParas(@RequestParam("classPath") String currentClassPath) {
 
         ArrayList<MethodParams> methodParamsList = new ArrayList<>();
 
         try {
             // creates an input stream for the file to be parsed
-            FileInputStream in = new FileInputStream(currentClassPath.getPath());
+            FileInputStream in = new FileInputStream(currentClassPath);
 
             // parse it
             CompilationUnit cu = JavaParser.parse(in);
@@ -48,13 +48,12 @@ public class MethodController {
 
     }
 
-    @RequestMapping(value = "/method/errodetails", method = RequestMethod.POST)
-    public ResponseEntity<?> getMethodDetails(@RequestBody ClassError classError) {
+    @RequestMapping(value = "/method/errodetails", method = RequestMethod.GET)
+    public ResponseEntity<?> getMethodDetails(@RequestParam("lineNum") String lineNum, @RequestParam("path") String path) {
 
         try {
-            int lineNo = classError.getLineNum();
             MethodBody mb = new MethodBody();
-            File file = new File(classError.getPath());
+            File file = new File(path);
 
             // creates an input stream for the file to be parsed
             FileInputStream in = new FileInputStream(file);
@@ -63,7 +62,7 @@ public class MethodController {
             CompilationUnit cu = JavaParser.parse(in);
 
             // visit and print the methods names
-            cu.accept(new MethodErrorVisitor(lineNo, mb), null);
+            cu.accept(new MethodErrorVisitor(Integer.parseInt(lineNum), mb), null);
 
             return new ResponseEntity<>(mb, HttpStatus.OK);
 
