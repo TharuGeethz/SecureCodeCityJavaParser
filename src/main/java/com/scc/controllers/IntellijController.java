@@ -24,7 +24,7 @@ public class IntellijController {
             String lineNumber = intelliJData.getLineNumber();
             String pathOfFileToOpen = intelliJData.getFilePathToOpen();
 
-            ProcessBuilder processBuilder = new ProcessBuilder("./intellijrunner.sh", lineNumber, pathOfFileToOpen);
+            ProcessBuilder processBuilder = new ProcessBuilder("intellijrunner.bat", lineNumber, pathOfFileToOpen);
             Process process = processBuilder.start();
 
             IntellijStartStatus startStatus = new IntellijStartStatus();
